@@ -5,14 +5,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GerenciadorDeCaminhoes extends JFrame {
-    private JTextField txtNomeMotorista, txtModeloCaminhao, txtQuilometragemTotal, txtQuilometragemUltimaCorrida, txtQuilometragemAdicional, txtTrajeto, txtMercadoria;
+    private JTextField txtNomeMotorista, txtcnhMotorista,txtPlaca, txtQuilometragemTotal, txtQuilometragemUltimaCorrida, txtQuilometragemAdicional, txtTrajeto, txtMercadoria;
     private JButton btnSalvar;
     private JTextArea outputArea;
 
     public GerenciadorDeCaminhoes() {
         // Inicialização dos campos de texto
         txtNomeMotorista = new JTextField(20);
-        txtModeloCaminhao = new JTextField(20);
+        txtcnhMotorista = new JTextField(20);
+        txtPlaca = new JTextField(20);
         txtQuilometragemTotal = new JTextField(20);
         txtQuilometragemUltimaCorrida = new JTextField(20);
         txtQuilometragemAdicional = new JTextField(20);
@@ -23,11 +24,13 @@ public class GerenciadorDeCaminhoes extends JFrame {
         outputArea.setEditable(false);
 
         // Painel de entrada de dados
-        JPanel inputPanel = new JPanel(new GridLayout(8, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(9, 2));
         inputPanel.add(new JLabel("Nome do Motorista:"));
         inputPanel.add(txtNomeMotorista);
-        inputPanel.add(new JLabel("Modelo do Caminhão:"));
-        inputPanel.add(txtModeloCaminhao);
+        inputPanel.add(new JLabel("CNH do Motorista:"));
+        inputPanel.add(txtcnhMotorista);
+        inputPanel.add(new JLabel("Placa do Caminhão: "));
+        inputPanel.add(txtPlaca);
         inputPanel.add(new JLabel("Quilometragem Total:"));
         inputPanel.add(txtQuilometragemTotal);
         inputPanel.add(new JLabel("Quilometragem da Última Corrida:"));
@@ -66,7 +69,8 @@ public class GerenciadorDeCaminhoes extends JFrame {
     private void salvarDados() {
         try {
             String nomeMotorista = txtNomeMotorista.getText();
-            String modeloCaminhao = txtModeloCaminhao.getText();
+            String cnhMotorista = txtcnhMotorista.getText();
+            String placa = txtPlaca.getText();
             int quilometragemTotal = Integer.parseInt(txtQuilometragemTotal.getText());
             int quilometragemUltimaCorrida = Integer.parseInt(txtQuilometragemUltimaCorrida.getText());
             int quilometragemAdicional = Integer.parseInt(txtQuilometragemAdicional.getText());
@@ -78,7 +82,8 @@ public class GerenciadorDeCaminhoes extends JFrame {
 
             // Exibição dos dados coletados
             outputArea.append("Motorista: " + nomeMotorista + "\n");
-            outputArea.append("Caminhão: " + modeloCaminhao + "\n");
+            outputArea.append("CNH: " + cnhMotorista + "\n");
+            outputArea.append("Placa: " + placa + "\n");
             outputArea.append("Quilometragem total: " + quilometragemTotal + "\n");
             outputArea.append("Quilometragem última corrida: " + quilometragemUltimaCorrida + "\n");
             outputArea.append("Quilometragem adicional: " + quilometragemAdicional + "\n");
@@ -87,7 +92,8 @@ public class GerenciadorDeCaminhoes extends JFrame {
 
             // Limpar campos após salvar
             txtNomeMotorista.setText("");
-            txtModeloCaminhao.setText("");
+            txtcnhMotorista.setText("");
+            txtPlaca.setText("");
             txtQuilometragemTotal.setText("");
             txtQuilometragemUltimaCorrida.setText("");
             txtQuilometragemAdicional.setText("");
@@ -109,7 +115,8 @@ public class GerenciadorDeCaminhoes extends JFrame {
 
         // Declaração de variáveis
         String nomeMotorista;
-        String modeloCaminhao;
+        String cnhMotorista;
+        String placa;
         int quilometragemTotal;
         int quilometragemUltimaCorrida;
         int quilometragemAdicional;
@@ -121,8 +128,11 @@ public class GerenciadorDeCaminhoes extends JFrame {
         nomeMotorista = scanner.nextLine();
 
         // Coleta de dados do caminhão
-        System.out.println("Digite o modelo do caminhão:");
-        modeloCaminhao = scanner.nextLine();
+        System.out.println("Digite a CNH do motorista:");
+        cnhMotorista = scanner.nextLine();
+
+        System.out.println("Digite a placa do caminhão:");
+        placa = scanner.nextLine();
 
         System.out.println("Digite a quilometragem total do caminhão:");
         quilometragemTotal = scanner.nextInt();
@@ -148,11 +158,12 @@ public class GerenciadorDeCaminhoes extends JFrame {
         // Exibição dos dados coletados
         System.out.println("\nDados coletados:");
         System.out.println("Motorista: " + nomeMotorista);
-        System.out.println("Caminhão: " + modeloCaminhao);
+        System.out.println("CNH: " + cnhMotorista);
+        System.out.println("placa do caminhão: " + placa);
         System.out.println("Quilometragem total: " + quilometragemTotal);
         System.out.println("Quilometragem última corrida: " + quilometragemUltimaCorrida);
         System.out.println("Quilometragem adicional: " + quilometragemAdicional);
-        System.out.println("Trajeto: " + trajeto);
+        System.out.println("Endereço: " + trajeto);
         System.out.println("Mercadoria transportada: " + mercadoria);
     }
 
